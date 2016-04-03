@@ -1,0 +1,66 @@
+books:
+  -
+    title: "Algebra and Trigonometry"
+    repo: algebra-trigonometry-book
+    uuid: 13ac107a-f15f-49d2-97e8-60ab2e3b519c
+    license: "CC-BY"
+  -
+    title: "Anatomy and Physiology"
+    repo: anatomy-book
+    uuid: 14fb4ad7-39a1-4eee-ab6e-3ef2482e3e22
+    license: "CC-BY"
+  -
+    title: "Biology"
+    repo: biology-book
+    uuid: 185cbf87-c72e-48f5-b51e-f14f21b5eabd
+    license: "CC-BY"
+  -
+    title: "Concepts of Biology"
+    repo: biology-concepts-book
+    uuid: b3c1e1d2-839c-42b0-a314-e119a8aafbdd
+    license: "CC-BY"
+  -
+    title: "Calculus"
+    repo: calculus-book
+    uuid: 9a1df55a-b167-4736-b5ad-15d996704270
+    license: "CC-BY-SA"
+  -
+    title: "Chemistry"
+    repo: chemistry-book
+    uuid: 85abf193-2bd2-4908-8563-90b8a7ac8df6
+    license: "CC-BY"
+  -
+    title: "Economics"
+    repo: economics-book
+    uuid: 69619d2b-68f0-44b0-b074-a9b2bf90b2c6
+    license: "CC-BY"
+  -
+    title: "Physics"
+    repo: physics-book
+    uuid: 031da8d3-b525-429c-80cf-6c8ed997733a
+    license: "CC-BY"
+  -
+    title: "Psychology"
+    repo: psychology-book
+    uuid: 4abf04bf-93a0-45c3-9cbc-2cefd46e68cc
+    license: "CC-BY"
+  -
+    title: "Precalculus"
+    repo: precalculus-book
+    uuid: fd53eae1-fa23-47c7-bb1b-972349835c3c
+    license: "CC-BY"
+  -
+    title: "Sociology"
+    repo: sociology-book
+    uuid: afe4332a-c97f-4fc4-be27-4e4d384a32d8
+    license: "CC-BY"
+  -
+    title: "Statistics"
+    repo: statistics-book
+    uuid: 30189442-6998-4686-ac05-ed152b91b9de
+    license: "CC-BY"
+  -
+    title: "US History"
+    repo: us-history-book
+    uuid: a7ba2fb8-8925-4987-b182-5f4429d48daa
+    license: "CC-BY"

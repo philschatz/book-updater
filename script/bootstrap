@@ -1,0 +1,6 @@
+#! /bin/sh
+
+gem install kramdown
+brew install jq # https://robots.thoughtbot.com/jq-is-sed-for-json
+git clone https://github.com/Connexions/rhaptos.cnxmlutils
+npm install

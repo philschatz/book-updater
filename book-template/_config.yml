@@ -1,0 +1,8 @@
+# Dependencies
+markdown:         kramdown
+
+bookviewer:       http://philschatz.com/book-viewer
+
+copyright:
+  owner: 'OpenStax College'
+  
