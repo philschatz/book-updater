@@ -23,19 +23,19 @@
 </xsl:template>
 
 <!-- Generate the Liquid Template header for modules -->
-<xsl:template match="x:body/x:div[@data-type='title']">
-  <title>
+<xsl:template match="x:body/x:div[@data-type='document-title']">
+  <page-title>
     <xsl:apply-templates select="node()"/>
-  </title>
+  </page-title>
 </xsl:template>
 
 
 <!-- Clean up the collxml HTML -->
 
 <xsl:template match="x:body[x:nav]/x:h1">
-  <title>
+  <page-title>
     <xsl:apply-templates select="node()"/>
-  </title>
+  </page-title>
 </xsl:template>
 
 <xsl:template match="x:nav">

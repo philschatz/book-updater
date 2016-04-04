@@ -95,8 +95,16 @@ version:          ${VERSION_NUMBER}
 bookviewer:       http://philschatz.com/book-viewer
 " > ${REPO_PATH}/_config.yml
 
+
+if [ -n "${COMMIT_MESSAGE}" ]
+then
+  COMMIT_MESSAGE_THIS_REPO="${COMMIT_MESSAGE}"
+else
+  COMMIT_MESSAGE_THIS_REPO="update to ${VERSION_NUMBER}"
+fi
+
 echo "Commit the results"
-FOO=$(cd ${REPO_PATH} && git add --all . && git commit -m "update to ${VERSION_NUMBER}")
+FOO=$(cd ${REPO_PATH} && git add --all . && git commit -m "${COMMIT_MESSAGE_THIS_REPO}")
 echo ${FOO}
 
 # git push ${REPO_PATH}

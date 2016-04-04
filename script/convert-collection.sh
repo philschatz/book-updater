@@ -23,12 +23,14 @@ function kramdownize {
   # 5. convert the <title> at the top of the file to a Liquid Template (for Jekyll)
   xsltproc ${KRAMDOWN_CLEANUP_XSL} - | xsltproc ${POST_CLEANUP_XSL} - | kramdown --line-width 9999 -i html -o kramdown - | sed 's/ data-z-for-sed=""\}\ */\}\
 \
-/g' /dev/stdin | sed 's/<figure/<figure markdown="1"/g' /dev/stdin | sed 's/<title>/---\
-title: "/g' /dev/stdin | sed 's/<\/title>/"\
+/g' /dev/stdin | sed 's/<figure/<figure markdown="1"/g' /dev/stdin | sed 's/<page-title>/---\
+title: "/g' /dev/stdin | sed 's/<\/page-title>/"\
 layout: page\
 ---\
 /g' /dev/stdin
 
+
+  # TODO: Move inline MathML back to being inline
 }
 
 
