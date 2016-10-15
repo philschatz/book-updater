@@ -8,6 +8,7 @@ The "canonical" version of the books are in [openstax.org](http://openstax.org) 
 
 - [Algebra and Trigonometry](https://github.com/philschatz/algebra-trigonometry-book)
 - [Anatomy and Physiology](https://github.com/philschatz/anatomy-book)
+- [Astronomy](https://github.com/philschatz/astronomy-book)
 - [Biology](https://github.com/philschatz/biology-book)
 - [Concepts of Biology](https://github.com/philschatz/biology-concepts-book)
 - [Calculus](https://github.com/philschatz/calculus-book) (CC-BY-SA)

@@ -1,5 +1,10 @@
 books:
   -
+    title: "Astronomy"
+    repo: astronomy-book
+    uuid: LnN76Opl
+    license: "CC-BY"
+  -
     title: "Algebra and Trigonometry"
     repo: algebra-trigonometry-book
     uuid: 13ac107a-f15f-49d2-97e8-60ab2e3b519c
