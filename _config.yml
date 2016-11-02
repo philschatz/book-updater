@@ -1,5 +1,10 @@
 books:
   -
+    title: "Microbiology"
+    repo: microbiology-book
+    uuid: e42bd376-624b-4c0f-972f-e0c57998e765
+    license: "CC-BY"
+  -
     title: "Astronomy"
     repo: astronomy-book
     uuid: LnN76Opl
@@ -20,15 +25,15 @@ books:
     uuid: 185cbf87-c72e-48f5-b51e-f14f21b5eabd
     license: "CC-BY"
   -
+    title: "Calculus"
+    repo: calculus-book
+    uuid: 9a1df55a-b167-4736-b5ad-15d996704270
+    license: "CC-BY-NC-SA"
+  -
     title: "Concepts of Biology"
     repo: biology-concepts-book
     uuid: b3c1e1d2-839c-42b0-a314-e119a8aafbdd
     license: "CC-BY"
-  -
-    title: "Calculus"
-    repo: calculus-book
-    uuid: 9a1df55a-b167-4736-b5ad-15d996704270
-    license: "CC-BY-SA"
   -
     title: "Chemistry"
     repo: chemistry-book
