@@ -1,3 +1,8 @@
 /rhaptos.cnxmlutils/
 /node_modules/
 /zips
+
+# Added by ruby
+/.bundle/
+/vendor/gems/
+/Gemfile.lock

@@ -5,7 +5,7 @@ SINGLE_BOOK_REPO_NAME=${1}
 # Check if dependencies are installed
 test -z "$(curl --version)" && (echo "curl was not found"; exit 1)
 test -z "$(xsltproc --version)" && (echo "xsltproc was not found"; exit 1)
-test -z "$(kramdown --version)" && (echo "kramdown was not found. try running script/bootstrap first"; exit 1)
+test -z "$(rbenv exec bundle exec kramdown --version)" && (echo "kramdown was not found. try running script/bootstrap first"; exit 1)
 test -z "$(jq --version)" && (echo "jq was not found. try running script/bootstrap first"; exit 1)
 if [ ! -d "./rhaptos.cnxmlutils" ]
 then
@@ -23,6 +23,7 @@ eval $(parse_yaml _config.yml "config_")
 # access yaml content
 # BOOK_COUNT=${#config_books__title[@]}
 
+BOOKS_WITH_ERRORS=()
 INDEX=0
 for BOOK_TITLE in "${config_books__title[@]}"
 do
@@ -39,7 +40,7 @@ do
     then
       echo "Generating" ${INDEX} ${UUID} ${LICENSE} ${REPO_NAME} ${BOOK_TITLE}
       ./script/do.sh "${REPO_NAME}" "${UUID}" "${BOOK_TITLE}" "${LICENSE}"
-      test $? != 0 && exit 1
+      test $? != 0 && BOOKS_WITH_ERRORS+="${REPO_NAME}"
     fi
   else
     echo "Error in _config.yml for book" ${INDEX} ${BOOK_TITLE} ${UUID}
@@ -47,3 +48,5 @@ do
   fi
   INDEX=$[INDEX + 1]
 done
+
+echo "Books with errors: ${BOOKS_WITH_ERRORS[@]}"
