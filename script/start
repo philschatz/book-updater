@@ -13,6 +13,8 @@ then
   exit 1
 fi
 
+echo "!!! Remember to use AUTO_PUSH=true environment var to automatically push changes"
+
 
 # include parse_yaml function
 . script/parse_yaml.sh
