@@ -109,5 +109,8 @@ echo ${FOO}
 
 if [[ "${AUTO_PUSH}" -eq "true" ]]; then
   echo "==> Pushing to GitHub"
-  git push ${REPO_PATH}
+  FOO=$(cd ${REPO_PATH} && git push || exit 1)
+  echo ${FOO}
 fi
+
+echo "==> Completed ${REPO_NAME}"
