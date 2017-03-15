@@ -1,4 +1,57 @@
 books:
+  # -
+  #   title: "Understanding Your French Horn"
+  #   uuid: 63pUjpNV
+  # -
+  #   title: "A Parent's Guide to Band"
+  #   uuid: 5tY1uUpV
+  # -
+  #   title: "Noisy Learning: Loud but Fun Music Education Activities"
+  #   uuid: vrLsG4BO
+  # -
+  #   title: "Frequency and Music"
+  #   uuid: qr4JzPAs
+  # -
+  #   title: "The Basic Elements of Music"
+  #   uuid: ntLJYC2n
+  # -
+  #   title: "Reading Music: Common Notation"
+  #   uuid: iUyUmVyR
+  # -
+  #   title: "Beginning Guitar"
+  #   uuid: iS3RxTuz
+  # -
+  #   title: "Musical Travels for Children"
+  #   uuid: Q1VXjVm0
+  # -
+  #   title: "Introduction to Music Theory"
+  #   uuid: LSnasyP3
+  # -
+  #   title: "Understanding Basic Music Theory"
+  #   uuid: KtdLe6cv
+  # -
+  #   title: "Sound, Physics and Music"
+  #   uuid: GOQaowEz
+  # -
+  #   title: "Exploring Music Theories"
+  #   uuid: -NHy6cNy
+  # -
+  #   title: "Music Theory for Digital Audio Workstation"
+  #   uuid: 8nIzebxA
+  # -
+  #   title: "Reading Rhythm: A Learning-by-Doing Course"
+  #   uuid: zohCrmuD
+  # -
+  #   title: "Music Theory for Guitar"
+  #   uuid: Xop1dAdt
+  # -
+  #   title: "Common Notation for Guitar Tablature Readers"
+  #   uuid: Id4zfc8u
+  -
+    title: "Intermediate Algebra"
+    repo: algebra-intermediate-book
+    uuid: 02776133-d49d-49cb-bfaa-67c7f61b25a1
+    license: "CC-BY"
   -
     title: "Microbiology"
     repo: microbiology-book
