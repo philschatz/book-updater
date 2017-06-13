@@ -60,7 +60,7 @@ books:
   -
     title: "Astronomy"
     repo: astronomy-book
-    uuid: LnN76Opl
+    uuid: 2e737be8-ea65-48c3-aa0a-9f35b4c6a966
     license: "CC-BY"
   -
     title: "Algebra and Trigonometry"
@@ -113,9 +113,9 @@ books:
     uuid: fd53eae1-fa23-47c7-bb1b-972349835c3c
     license: "CC-BY"
   -
-    title: "Sociology"
+    title: "Sociology 2e"
     repo: sociology-book
-    uuid: afe4332a-c97f-4fc4-be27-4e4d384a32d8
+    uuid: 02040312-72c8-441e-a685-20e9333f3e1d
     license: "CC-BY"
   -
     title: "Statistics"

@@ -40,7 +40,7 @@ do
     # then only generate that one book
     if [ -z "${SINGLE_BOOK_REPO_NAME}" -o "${SINGLE_BOOK_REPO_NAME}" = "${REPO_NAME}" ]
     then
-      echo "Generating" ${INDEX} ${UUID} ${LICENSE} ${REPO_NAME} ${BOOK_TITLE}
+      echo "Generating" ${INDEX} ${REPO_NAME} ${UUID} ${BOOK_TITLE} ${LICENSE}
       ./script/do.sh "${REPO_NAME}" "${UUID}" "${BOOK_TITLE}" "${LICENSE}"
       test $? != 0 && BOOKS_WITH_ERRORS+="${REPO_NAME}"
     fi

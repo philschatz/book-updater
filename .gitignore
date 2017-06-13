@@ -1,6 +1,7 @@
 /rhaptos.cnxmlutils/
 /node_modules/
 /zips
+/zips-backup/
 
 # Added by ruby
 /.bundle/
