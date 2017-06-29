@@ -83,7 +83,7 @@ do
   echo "<html xmlns=\"http://www.w3.org/1999/xhtml\"><head><title></title></head>${MODULE_HTML}</html>" | xmllint --pretty 2 /dev/stdin > ${SOURCE}/${MODULE_NAME}/converted.xhtml
   # validate the XHTML
   echo "Checking ${SOURCE}/${MODULE_NAME}/converted.xhtml"
-  java -jar /Users/phil/github/cnx/cnxml/cnxml/jing.jar /Users/phil/github/cnx/cnxml/textbook-html/textbook-html-book-or-contents.rng ${SOURCE}/${MODULE_NAME}/converted.xhtml
+  java -jar /Users/phil/github/cnx/cnxml/cnxml/jing.jar /Users/phil/github/cnx/cnxml/textbook-html/textbook-html/book-or-contents.rng ${SOURCE}/${MODULE_NAME}/converted.xhtml
   VALIDATION_ERROR=$?
   if [ ! ${VALIDATION_ERROR} -eq 0 ]; then
     echo "------------------------------"
