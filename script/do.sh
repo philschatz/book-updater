@@ -114,14 +114,14 @@ else
   COMMIT_MESSAGE_THIS_REPO="update to ${VERSION_NUMBER}"
 fi
 
-# echo "Commit the results"
-# FOO=$(cd ${REPO_PATH} && git add --all . && git commit -m "${COMMIT_MESSAGE_THIS_REPO}")
-# echo ${FOO}
-#
-# if [[ "${AUTO_PUSH}" -eq "true" ]]; then
-#   echo "==> Pushing to GitHub"
-#   FOO=$(cd ${REPO_PATH} && git push || exit 1)
-#   echo ${FOO}
-# fi
+if [[ "${AUTO_PUSH}" -eq "true" ]]; then
+  echo "Commit the results"
+  FOO=$(cd ${REPO_PATH} && git add --all . && git commit -m "${COMMIT_MESSAGE_THIS_REPO}")
+  echo ${FOO}
+
+  echo "==> Pushing to GitHub"
+  FOO=$(cd ${REPO_PATH} && git push || exit 1)
+  echo ${FOO}
+fi
 
 echo "==> Completed ${REPO_NAME}"

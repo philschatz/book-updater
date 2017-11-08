@@ -13,7 +13,7 @@ if [[ ! -d "./subrepos/rhaptos.cnxmlutils" ]]; then
   die "subrepos/rhaptos.cnxmlutils was not found. Run ./script/setup"
 fi
 
-_say "!!! Remember to use AUTO_PUSH=true environment var to automatically push changes"
+_say "!!! Remember to use ${c_purple}AUTO_PUSH=true${c_none} environment var to automatically push changes"
 
 
 # include parse_yaml function
