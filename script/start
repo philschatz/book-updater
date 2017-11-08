@@ -37,7 +37,7 @@ for BOOK_TITLE in "${config_books__title[@]}"; do
     # If someone passed in the SINGLE_BOOK_REPO_NAME (just generate 1 book)
     # then only generate that one book
     if [ -z "${SINGLE_BOOK_REPO_NAME}" -o "${SINGLE_BOOK_REPO_NAME}" = "${REPO_NAME}" ]; then
-      do_progress_quiet "Generating ${INDEX} ${REPO_NAME} ${UUID} ${BOOK_TITLE} ${LICENSE}" \
+      do_progress_quiet "Generating ${INDEX} ${REPO_NAME}" \
         ./script/do.sh "${REPO_NAME}" "${UUID}" "${BOOK_TITLE}" "${LICENSE}"
       # test $? != 0 && BOOKS_WITH_ERRORS+="${REPO_NAME}"
     fi
