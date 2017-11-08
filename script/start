@@ -1,23 +1,23 @@
 #!/bin/bash
+cd "$(dirname "$0")/.." || exit 111
+source ./script/bootstrap || exit 111
 
 SINGLE_BOOK_REPO_NAME=${1}
 
 # Check if dependencies are installed
-test -z "$(curl --version)" && (echo "curl was not found"; exit 1)
-test -z "$(xsltproc --version)" && (echo "xsltproc was not found"; exit 1)
-test -z "$(rbenv exec bundle exec kramdown --version)" && (echo "kramdown was not found. try running script/bootstrap first"; exit 1)
-test -z "$(jq --version)" && (echo "jq was not found. try running script/bootstrap first"; exit 1)
-if [ ! -d "./rhaptos.cnxmlutils" ]
-then
-  echo "rhaptos.cnxmlutils was not found. try running script/bootstrap first"
-  exit 1
+[[ $(which curl) ]] || die "curl was not found. Run ./script/setup"
+[[ $(which rbenv) ]] || die "rbenv was not found. Run ./script/setup"
+[[ $(rbenv exec bundle exec kramdown --version) ]] || die "kramdown was not found. Run ./script/setup"
+[[ $(which jq) ]] || die "jq was not found. Run ./script/setup"
+if [[ ! -d "./subrepos/rhaptos.cnxmlutils" ]]; then
+  die "subrepos/rhaptos.cnxmlutils was not found. Run ./script/setup"
 fi
 
-echo "!!! Remember to use AUTO_PUSH=true environment var to automatically push changes"
+_say "!!! Remember to use AUTO_PUSH=true environment var to automatically push changes"
 
 
 # include parse_yaml function
-. script/parse_yaml.sh
+source script/parse_yaml.sh
 
 # read yaml file
 eval $(parse_yaml _config.yml "config_")
@@ -27,28 +27,24 @@ eval $(parse_yaml _config.yml "config_")
 
 BOOKS_WITH_ERRORS=()
 INDEX=0
-for BOOK_TITLE in "${config_books__title[@]}"
-do
+for BOOK_TITLE in "${config_books__title[@]}"; do
   REPO_NAME=${config_books__repo[${INDEX}]}
   UUID=${config_books__uuid[${INDEX}]}
   LICENSE=${config_books__license[${INDEX}]}
   # Just making sure we're not crazy
-  if [ -n "${BOOK_TITLE}" -a -n "${REPO_NAME}" -a -n "${UUID}" -a -n "${LICENSE}" ]
-  then
+  if [ -n "${BOOK_TITLE}" -a -n "${REPO_NAME}" -a -n "${UUID}" -a -n "${LICENSE}" ]; then
 
     # If someone passed in the SINGLE_BOOK_REPO_NAME (just generate 1 book)
     # then only generate that one book
-    if [ -z "${SINGLE_BOOK_REPO_NAME}" -o "${SINGLE_BOOK_REPO_NAME}" = "${REPO_NAME}" ]
-    then
-      echo "Generating" ${INDEX} ${UUID} ${LICENSE} ${REPO_NAME} ${BOOK_TITLE}
-      ./script/do.sh "${REPO_NAME}" "${UUID}" "${BOOK_TITLE}" "${LICENSE}"
-      test $? != 0 && BOOKS_WITH_ERRORS+="${REPO_NAME}"
+    if [ -z "${SINGLE_BOOK_REPO_NAME}" -o "${SINGLE_BOOK_REPO_NAME}" = "${REPO_NAME}" ]; then
+      do_progress_quiet "Generating ${INDEX} ${REPO_NAME} ${UUID} ${BOOK_TITLE} ${LICENSE}" \
+        ./script/do.sh "${REPO_NAME}" "${UUID}" "${BOOK_TITLE}" "${LICENSE}"
+      # test $? != 0 && BOOKS_WITH_ERRORS+="${REPO_NAME}"
     fi
   else
-    echo "Error in _config.yml for book" ${INDEX} ${BOOK_TITLE} ${UUID}
-    exit 1
+    die "Error in _config.yml for book ${INDEX} ${BOOK_TITLE} ${UUID}"
   fi
   INDEX=$[INDEX + 1]
 done
 
-echo "Books with errors: ${BOOKS_WITH_ERRORS[@]}"
+_say "Books with errors: ${BOOKS_WITH_ERRORS[@]}"

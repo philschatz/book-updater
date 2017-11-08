@@ -1,4 +1,6 @@
-#! /bin/sh
+#!/bin/bash
+cd "$(dirname "$0")/.." || exit 111
+source ./script/bootstrap || exit 111
 
 SOURCE=${1}
 DEST=${2}
@@ -7,7 +9,12 @@ MIGRATE='./migrate'
 
 EMPTY_BOOK=${ROOT}/book-template
 
-CNXML_UTILS=${ROOT}/rhaptos.cnxmlutils/rhaptos/cnxmlutils/xsl
+CNXML_REPO=./subrepos/cnxml
+CNXML_UTILS=./subrepos/rhaptos.cnxmlutils/rhaptos/cnxmlutils/xsl
+
+JING_JAR_FILE="${CNXML_REPO}/cnxml/jing.jar"
+TEXTBOOK_OR_CONTENTS_RNG_FILE="${CNXML_REPO}/textbook-html/textbook-html/book-or-contents.rng"
+
 CNXML_TO_HTML_XSL=${CNXML_UTILS}/cnxml-to-html5.xsl
 COLLXML_TO_HTML_XSL=${CNXML_UTILS}/collxml-to-html5.xsl
 
@@ -54,14 +61,14 @@ cp ${EMPTY_BOOK}/LICENSE.txt ${DEST}/LICENSE.txt
 cp ${EMPTY_BOOK}/README.md ${DEST}/README.md
 
 
-# Copy resources (assume no name collisions)
-echo "Copying resources (assuming duplicate file names are OK)"
-mkdir -p ${DEST}/resources
-
-# cp ${SOURCE}/*/* ${DEST}/resources # "Args list is too long" commonly crops up
-find ${SOURCE} -type f -exec cp {} ${DEST}/resources \;
-
-rm ${DEST}/resources/*.cnxml
+# # Copy resources (assume no name collisions)
+# echo "Copying resources (assuming duplicate file names are OK)"
+# mkdir -p ${DEST}/resources
+#
+# # cp ${SOURCE}/*/* ${DEST}/resources # "Args list is too long" commonly crops up
+# find ${SOURCE} -type f -exec cp {} ${DEST}/resources \;
+#
+# rm ${DEST}/resources/*.cnxml
 
 
 
@@ -80,7 +87,20 @@ do
   # echo "Building ${MODULE_NAME}.md"
   MODULE_HTML=$(xsltproc ${CNXML_TO_HTML_XSL} ${SOURCE}/${MODULE_NAME}/index.cnxml)
   # print out the file for debugging
-  echo ${MODULE_HTML} > ${SOURCE}/${MODULE_NAME}/converted.html
+  echo "<html xmlns=\"http://www.w3.org/1999/xhtml\"><head><title></title></head>${MODULE_HTML}</html>" | xmllint --pretty 2 /dev/stdin > ${SOURCE}/${MODULE_NAME}/converted.xhtml
+  # validate the XHTML
+  echo "Checking ${SOURCE}/${MODULE_NAME}/converted.xhtml"
+  java -jar "${JING_JAR_FILE}" "${TEXTBOOK_OR_CONTENTS_RNG_FILE}" ${SOURCE}/${MODULE_NAME}/converted.xhtml
+  VALIDATION_ERROR=$?
+  if [ ! ${VALIDATION_ERROR} -eq 0 ]; then
+    echo "------------------------------"
+    echo ""
+    echo "ERROR_VALIDATING ${SOURCE}/${MODULE_NAME}/converted.xhtml"
+    echo ""
+    echo "------------------------------"
+    exit 1
+  fi
+
   echo "<html xmlns=\"http://www.w3.org/1999/xhtml\">${MODULE_HTML}</html>" | kramdownize > ${DEST}/contents/${MODULE_NAME}.md
 done
 
