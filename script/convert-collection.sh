@@ -89,17 +89,17 @@ do
   # print out the file for debugging
   echo "<html xmlns=\"http://www.w3.org/1999/xhtml\"><head><title></title></head>${MODULE_HTML}</html>" | xmllint --pretty 2 /dev/stdin > ${SOURCE}/${MODULE_NAME}/converted.xhtml
   # validate the XHTML
-  echo "Checking ${SOURCE}/${MODULE_NAME}/converted.xhtml"
-  java -jar "${JING_JAR_FILE}" "${TEXTBOOK_OR_CONTENTS_RNG_FILE}" ${SOURCE}/${MODULE_NAME}/converted.xhtml
-  VALIDATION_ERROR=$?
-  if [ ! ${VALIDATION_ERROR} -eq 0 ]; then
-    echo "------------------------------"
-    echo ""
-    echo "ERROR_VALIDATING ${SOURCE}/${MODULE_NAME}/converted.xhtml"
-    echo ""
-    echo "------------------------------"
-    exit 1
-  fi
+  # echo "Checking ${SOURCE}/${MODULE_NAME}/converted.xhtml"
+  # java -jar "${JING_JAR_FILE}" "${TEXTBOOK_OR_CONTENTS_RNG_FILE}" ${SOURCE}/${MODULE_NAME}/converted.xhtml
+  # VALIDATION_ERROR=$?
+  # if [ ! ${VALIDATION_ERROR} -eq 0 ]; then
+  #   echo "------------------------------"
+  #   echo ""
+  #   echo "ERROR_VALIDATING ${SOURCE}/${MODULE_NAME}/converted.xhtml"
+  #   echo ""
+  #   echo "------------------------------"
+  #   exit 1
+  # fi
 
   echo "<html xmlns=\"http://www.w3.org/1999/xhtml\">${MODULE_HTML}</html>" | kramdownize > ${DEST}/contents/${MODULE_NAME}.md
 done
